@@ -11,6 +11,7 @@ function App() {
       return;
     })
   );
+  const [play, setPlay] = useState(true);
   const slideNext = (slide) => {
     setCurrent((prevSlide) => {
       const result = (prevSlide + 1) % data.length;
@@ -28,11 +29,17 @@ function App() {
     });
   };
   useEffect(() => {
-    const interval = setInterval(() => {
-      slideNext(-1);
+    if (play) {
+      const interval = setInterval(() => {
+        slideNext();
+      }, 3000);
       return () => clearInterval(interval);
-    }, 5000);
-  }, []);
+    }
+  }, [play]);
+
+  const togglePlay = () => {
+    setPlay(!play);
+  };
   return (
     <>
       <div className="slider-container">
@@ -55,6 +62,11 @@ function App() {
           );
         })}
         <div className="navigation">
+          <div className="play-container">
+            <button type="button" className="play" onClick={togglePlay}>
+              <i class={!play ? "ph ph-play" : "ph ph-pause"}></i>
+            </button>
+          </div>
           <button type="button" className="left" onClick={slidePrev}>
             <i class="ph ph-caret-left"></i>
           </button>
