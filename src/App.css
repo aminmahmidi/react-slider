@@ -98,12 +98,14 @@ button:hover {
 
 .navigation-bar {
   margin: 0 auto;
-  width: 200px;
+  width: 400px;
   align-self: center;
   display: flex;
+  flex-wrap: wrap-reverse;
 }
 .navigation-bar button {
   height: 15px;
+  width: 100%;
   border: none;
   border-radius: 20px;
   margin: 0 3px;

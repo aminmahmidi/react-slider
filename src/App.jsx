@@ -11,11 +11,12 @@ function App() {
       return;
     })
   );
-  const slideNext = (item) => {
+  const slideNext = (slide) => {
     setCurrent((prevSlide) => {
       const result = (prevSlide + 1) % data.length;
       setNavigation(navigation + 1) % data.length;
-      setCurrentIndex(prevSlide);
+      slide = prevSlide;
+      setCurrentIndex(result);
       return result;
     });
   };
@@ -26,16 +27,12 @@ function App() {
       return result;
     });
   };
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCurrent((prevSlide) => {
-  //       const result = (prevSlide + 1) % data.length;
-  //       setNavigation(navigation + 1) % data.length;
-  //       return result;
-  //     });
-  //     return () => clearInterval(interval);
-  //   }, 5000);
-  // }, []);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      slideNext(-1);
+      return () => clearInterval(interval);
+    }, 5000);
+  }, []);
   return (
     <>
       <div className="slider-container">
@@ -67,6 +64,7 @@ function App() {
             current={current}
             setCurrentIndex={setCurrentIndex}
             currentIndex={currentIndex}
+            slideNext={slideNext}
           />
           <button type="button" className="right">
             <i class="ph ph-caret-right" onClick={slideNext}></i>
