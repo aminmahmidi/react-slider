@@ -43,24 +43,26 @@ function App() {
   return (
     <>
       <div className="slider-container">
-        {data.map((item, index) => {
-          const { img, title, info, id } = item;
-          return (
-            <div
-              className="slide"
-              style={{ transform: `translateX(${100 * (index - current)}%)` }}
-              key={id}
-            >
-              <div className="text">
-                <h3>{title}</h3>
-                <p>{info}</p>
+        <div className="slide-container">
+          {data.map((item, index) => {
+            const { img, title, info, id } = item;
+            return (
+              <div
+                className="slide"
+                style={{ transform: `translateX(${100 * (index - current)}%)` }}
+                key={id}
+              >
+                <div className="text">
+                  <h3>{title}</h3>
+                  <p>{info}</p>
+                </div>
+                <div className="img-container">
+                  <img src={img} alt="" />
+                </div>
               </div>
-              <div className="img-container">
-                <img src={img} alt="" />
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
         <div className="navigation">
           <div className="play-container">
             <button type="button" className="play" onClick={togglePlay}>

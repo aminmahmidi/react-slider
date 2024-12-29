@@ -11,6 +11,8 @@
 
 body {
   background-color: var(--Background-color);
+  margin: 0;
+  padding: 0;
 }
 
 .slider-container {
@@ -18,9 +20,22 @@ body {
   height: 600px;
   position: relative;
   margin: 0 auto;
-  margin-top: 5rem;
-  overflow: hidden;
+  margin-top: 4rem;
   border-radius: 10px;
+}
+
+@media screen and (max-width: 800px) {
+  .slider-container {
+    width: 90%;
+    height: 550px;
+    margin-top: 3%;
+    padding: 0;
+  }
+}
+.slide-container {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
 }
 
 .slide {
@@ -29,6 +44,7 @@ body {
   width: 100%;
   height: 100%;
   transition: 0.3s;
+  border-radius: 10px;
 }
 .slide .text {
   position: absolute;
@@ -36,7 +52,6 @@ body {
   background: linear-gradient(to bottom, transparent, var(--Background-color), var(--Background-color));
   z-index: 1;
   width: 100%;
-  height: 35%;
   padding: 20px;
   color: white;
   padding-top: 20px;
@@ -68,8 +83,10 @@ body {
 }
 
 .navigation {
+  width: 70%;
+  margin: 0 auto;
   display: flex;
-  position: absolute;
+  position: relative;
   align-content: center;
   align-self: center;
   bottom: 0;
@@ -83,12 +100,12 @@ button {
   align-content: center;
   align-items: center;
   text-align: center;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   margin: 0 10px 0 10px;
   border: none;
-  font-size: 25px;
+  font-size: 20px;
   transition: 0.4s;
   cursor: pointer;
   color: white;
@@ -99,12 +116,11 @@ button:hover {
 
 .navigation-bar {
   margin: 0 auto;
-  width: 400px;
   align-self: center;
   display: flex;
+  align-items: center;
 }
 .navigation-bar button {
-  height: 5px;
   border: none;
   border-radius: 2px;
   margin: 0 5px;
@@ -116,16 +132,28 @@ button:hover {
 }
 
 .active {
-  background-color: var(--primaryColor);
-  width: 100%;
+  background-color: white;
+  width: 20px;
+  height: 20px;
   border-radius: 4px !important;
 }
 
 .inactive {
   background-color: rgba(241, 241, 241, 0.811);
-  width: 30%;
+  width: 20px;
+  height: 5px;
 }
 
 .play-container {
   padding: 0 40px 0 0;
+}
+
+@media screen and (max-width: 800px) {
+  .navigation {
+    width: 100%;
+    padding: 0;
+  }
+  .play-container {
+    padding: 0;
+  }
 }/*# sourceMappingURL=App.css.map */
